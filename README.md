@@ -22,7 +22,12 @@ const articles = {
 }
 
 
-/* write the parameters (1. mongo url, 2. db name, 3. your collections, 4. optional parameter - false if
-you don't want to use the notificator) */
+/* write the parameters 
+1. mongo url;
+2. db name;
+3. your collections;
+4. optional parameter - false if you don't want to use the notificator;
+*/
 mongoMigrate('mongodb://localhost:27017', 'newsDb', articles, false);
 ```
+Look more [here](https://github.com/Arandar/jmrate/tree/master/db)
