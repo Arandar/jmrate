@@ -2,7 +2,7 @@
 An easy way to create a new database with collections in MongoDB  
 Simple usage:
 ```javascript
-const mongoMigrate = require('jmrate').mongoMigrate; // import jmrate to your file
+const mongoMigrate = require('jmrate').mongoMigrate; // import jmrate into your file
 
 // write the information, which you want to import
 const articles = {

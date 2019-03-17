@@ -1,0 +1,28 @@
+{
+    "name": "jmrate",
+    "author": {
+        "name": "Arandar"
+    },
+    "version": "0.0.1",
+    "description": "An easy way to create a new database with collections in MongoDB",
+    "scripts": {
+        "migrate": "node ./db/index.js"
+    },
+    "keywords": [
+        "jmrate",
+        "mongo migrate",
+        "mongo migration",
+        "js migration",
+        "node migration",
+        "migrate",
+        "migration"
+    ],
+    "license": "MIT",
+    "main": "index.js",
+    "dependencies": {
+        "mongodb": "^3.1.13"
+    },
+    "devDependencies": {
+        "node-notifier": "^5.4.0"
+    }
+}
