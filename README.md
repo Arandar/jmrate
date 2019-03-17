@@ -1,6 +1,11 @@
 # jmrate migrator for MongoDB
 An easy way to create a new database with collections in MongoDB  
-Simple usage:
+# Installation
+Installation is done using the [npm install](https://docs.npmjs.com/downloading-and-installing-packages-locally):  
+```javascript
+$ npm i jmrate
+``` 
+# Simple usage:
 ```javascript
 const mongoMigrate = require('jmrate').mongoMigrate; // import jmrate into your file
 
