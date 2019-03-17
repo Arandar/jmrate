@@ -9,5 +9,3 @@ const COLLECTIONS = [
 ]
 
 mongoMigrate(config.url, config.dbName, COLLECTIONS);
-
-
