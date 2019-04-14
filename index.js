@@ -14,8 +14,24 @@ const mongoMigrate = (url, dbName, collections, notifications) => {
                 const db = client.db(dbName);
                 await db.dropDatabase();
                 await new Promise((res, rej) => {
-                    collections.map(collection => {
+                    collections.map(async collection => {
                         try {
+                            if (collection.required && !Array.isArray(collection.required))
+                                collection.required = new Array(collection.required);
+                            (collection.required || collection.properties) && await new Promise((res, rej) => {
+                                db.createCollection(collection.name, {
+                                    validator: {
+                                        $jsonSchema: {
+                                            bsonType: "object",
+                                            ...(collection.required && { required: collection.required }),
+                                            ...(collection.properties && { properties: collection.properties }),
+                                        }
+                                    }
+                                }, (err, result) => {
+                                    console.log('\x1b[35m%s\x1b[0m', `  -- ${collection.name} validation is created...`);
+                                    result && res();
+                                });
+                            })
                             db.collection(collection.name).insertMany(collection.items, (err, result) => {
                                 console.log('\x1b[34m%s\x1b[0m', `  -- ${collection.name} is inserted...`);
                                 results.push(result);
