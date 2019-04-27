@@ -1,8 +1,9 @@
 "use strict";
 const notifier = require('node-notifier');
 
-const mongoMigrate = (url, dbName, collections, notifications) => {
+const mongoMigrate = (url, dbName, collections, noDrop, notifications) => {
     try {
+        if (noDrop === false) notifications = false;
         if (collections && !collections.length) collections = new Array(collections);
         const MongoClient = require('mongodb').MongoClient;
         const mongoClient = new MongoClient(url, { useNewUrlParser: true });
@@ -12,7 +13,7 @@ const mongoMigrate = (url, dbName, collections, notifications) => {
             try {
                 const results = new Array();
                 const db = client.db(dbName);
-                await db.dropDatabase();
+                noDrop !== true && await db.dropDatabase();
                 await new Promise((res, rej) => {
                     collections.map(async collection => {
                         try {
